@@ -10,7 +10,7 @@ For the final group project we wanted to develop an app that was fun, useful & s
 
 https://github.com/easmsm/final-project-ecommerce-site
 
-https://pet-store-fetss.herokuapp.com/
+https://pet-shop22.herokuapp.com/
 
 
 ## Collaboration Credits
