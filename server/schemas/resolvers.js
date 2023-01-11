@@ -103,20 +103,21 @@ const resolvers = {
             
           
 
-          }
-        //   addProduct: async (parent, { userId, productName }, context) => {
-        //     if (context.user) {
-        //       const updatedUser = await User.findOneAndUpdate(
-        //         { _id: userId },
-        //         { $push: { products: { productName, username: context.user.username } } },
-        //         { new: true, runValidators: true }
-        //       );
+          },
+
+          addProductToPet: async (parent, { petId, productName, description }) => {
+            
+              const updatedPet = await Pet.findOneAndUpdate(
+                { _id: petId },
+                { $addToSet: { products: { productName, description } } },
+                { new: true, runValidators: true }
+              );
           
-        //       return updatedUser;
-        //     }
+              return updatedPet;
+            
           
-        //     throw new AuthenticationError('You need to be logged in!');
-        //   },
+            
+          },
     //       addProduct: async (parent, { userId, productName }, context) => {
     //     if (context.user) {
     //       const updatedUser = await User.findOneAndUpdate(

@@ -34,7 +34,8 @@ const SinglePet = props => {
          <span>Name:</span> <p>{pet.petName}</p>
           <span>Type:</span><p>{pet.type}</p>
           <span>Breed:</span><p>{pet.breed}</p>
-          <Link to="/product" ><button>Go to Products/Services</button></Link>
+
+          <Link to={"/product"} state={{from: petId}} ><button>Go to Products/Services</button></Link>
         </div>
       </div>
     </div>

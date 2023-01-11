@@ -24,6 +24,21 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_PRODUCT_TO_PET = gql`
+mutation addProductToPet( $petId: ID!, $productName: String!, $description: String! ) {
+  addProductToPet( petId: $petId, productName: $productName, description: $description) {
+    _id
+    productName
+    description
+
+  
+  
+  }
+
+}
+
+`;
+
 export const ADD_PRODUCT = gql`
   mutation addProduct($id: ID!) {
     addProduct(productId: $id) {

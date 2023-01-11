@@ -17,7 +17,17 @@ const petSchema = new Schema(
     username: {
         type: String,
         required: true
-    }
+    },
+    products: [
+      {
+        productName: {
+          type: String
+        },
+        description: {
+          type: String
+        }
+      }
+  ]
   },
   {
     toJSON: {
