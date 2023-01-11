@@ -8,9 +8,9 @@ For the final group project we wanted to develop an app that was fun, useful & s
 
 ## Repo Link & Heroku link
 
-https://github.com/easmsm/final-project-ecommerce-site
+https://github.com/FCarter09/pet-shop.git
 
-https://pet-store-fetss.herokuapp.com/
+https://pet-shop22.herokuapp.com/
 
 
 ## Collaboration Credits
