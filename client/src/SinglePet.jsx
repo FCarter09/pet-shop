@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PET } from './utils/queries';
 import Auth from './utils/auth';
 import { Link } from 'react-router-dom';
+import './index.css'
 
 
 const SinglePet = props => {
@@ -47,7 +48,7 @@ const SinglePet = props => {
             </div>     
             ): <p></p>}
 
-          <Link to={"/product"} state={{from: petId}} ><button>Go to Products/Services</button></Link>
+          <Link to={"/product"} state={{from: petId}} ><button className='goToProduct-btn'>Go to Products/Services</button></Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, {useState, useMutation} from "react";
 import Auth from './utils/auth';
 import { useLocation } from 'react-router-dom';
+import './index.css'
 import {ADD_PRODUCT_TO_PET} from './utils/mutations'
 //Might need these import in the future
 // import { useQuery } from '@apollo/client';
@@ -57,7 +58,7 @@ const Product = () => {
                   <span>Price:</span><p>${product.price}.00</p>
                   <span>Quantity:</span><p>{product.quantity}</p>
                   {loggedIn & petId !==0 ? (
-                  <button key={product.id} onClick={() => {
+                  <button className='selectProduct-btn' key={product.id} onClick={() => {
                         // make mutation to add service
                         // need petId, product.productName, product.description
                         // addProductToPetDB(petId, product.productName, product.description)
