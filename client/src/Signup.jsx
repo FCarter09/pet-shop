@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from './utils/mutations';
 import { Link } from 'react-router-dom';
 import Auth from './utils/auth';
+import './index.css'
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -70,7 +71,7 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className='btn d-block w-100' type='submit'>
+              <button className='button d-block w-100' type='submit'>
               Submit
               </button>
             </form>

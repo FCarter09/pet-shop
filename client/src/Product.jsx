@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useMutation} from "react";
 import Auth from './utils/auth';
 import { useLocation } from 'react-router-dom';
 import {ADD_PRODUCT_TO_PET} from './utils/mutations'
@@ -29,15 +29,22 @@ const Product = () => {
       {id:4, productName: "Cat Grooming", description: "Hair Trimming", price: 50, quantity: 20},
       {id:5, productName: "Dog Toy", description: "Bone", price: 10, quantity: 20},
       {id:6, productName: "Cat Toy", description: "Scratching Post",  price: 10, quantity: 20}
-  ])
+    ])
 
-  const loggedIn = Auth.loggedIn();
+    const loggedIn = Auth.loggedIn();
 
-
-  const buttonClick = async( productName, description, event) => {
-    console.log( petId, productName, description)
-
-  }
+    // consider this
+    // const [addProductToPetDB, { error, data: petData}] = useMutation(ADD_PRODUCT_TO_PET)
+    // const addProductToPet = async (event) => {
+    //   try {
+    //     //takes pet data and executes Add_PRODUCT_TO_PET
+    //     const {petData} = await addProductToPetDB ({
+    //       variables: { ...petData}
+    //     })
+    //   } catch (e) {
+    //     console.error(e)
+    //   }
+    // }
   
     
         return (
@@ -50,7 +57,11 @@ const Product = () => {
                   <span>Price:</span><p>${product.price}.00</p>
                   <span>Quantity:</span><p>{product.quantity}</p>
                   {loggedIn & petId !==0 ? (
-                  <button key={product.id} onClick={buttonClick.bind( product.productName, product.description)} >Select Service/Product</button>
+                  <button key={product.id} onClick={() => {
+                        // make mutation to add service
+                        // need petId, product.productName, product.description
+                        // addProductToPetDB(petId, product.productName, product.description)
+                  }} >Select {product.productName}</button>
                   ): <p></p>}
                 </div>
               ))}

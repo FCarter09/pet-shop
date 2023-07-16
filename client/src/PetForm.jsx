@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { QUERY_PETS, QUERY_ME } from './utils/queries';
 import { ADD_PET } from './utils/mutations';
+import './index.css'
 
 
 
@@ -119,7 +120,7 @@ const handleChangeBreed = event => {
           onChange={handleChangeBreed}
         ></input>
       
-        <button className="btn col-12 col-md-3" type="submit" >
+        <button className="petForm-btn col-12 col-md-3" type="submit" >
           Submit
         </button>
   
