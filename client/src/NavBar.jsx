@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Auth from './utils/auth';
+import './index.css'
 
 //need to add NavBar links
 //need to update from bootstrap
@@ -21,7 +22,7 @@ const NavBar = () => {
         <nav className="text-center">
             {Auth.loggedIn() ? (
           <>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="nav" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
             <Link to="/dashboard" className="nav-link active" aria-current="page">Dashboard</Link>
@@ -36,7 +37,7 @@ const NavBar = () => {
           </div>
         </>
       ) : (
-        <>  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <>  <div className="nav" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/login" className="nav-link active" aria-current="page">Login/Signup</Link>
