@@ -44,33 +44,39 @@ const Signup = () => {
           <h4 className='card-header'>Create Account/<Link to="/login">Login</Link></h4>
           <div className='card-body'>
             <form onSubmit={handleFormSubmit}>
-              <input
-                className='form-input'
-                placeholder='Your username'
-                name='username'
-                type='username'
-                id='username'
-                value={formState.username}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='Your email'
-                name='email'
-                type='email'
-                id='email'
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className='form-input'
-                placeholder='******'
-                name='password'
-                type='password'
-                id='password'
-                value={formState.password}
-                onChange={handleChange}
-              />
+              <div className='signup-username'>
+                <input
+                  className='form-input d-block w-100'
+                  placeholder='Your username'
+                  name='username'
+                  type='username'
+                  id='username'
+                  value={formState.username}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className='signup-email'>
+                <input
+                  className='form-input d-block w-100'
+                  placeholder='Your email'
+                  name='email'
+                  type='email'
+                  id='email'
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className ='signup-email'>
+                <input
+                  className='form-input d-block w-100'
+                  placeholder='******'
+                  name='password'
+                  type='password'
+                  id='password'
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+              </div>
               <button className='button d-block w-100' type='submit'>
               Submit
               </button>

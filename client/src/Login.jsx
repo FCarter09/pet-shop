@@ -50,17 +50,20 @@ const Login = (props) => {
           <h4 className='card-header'>Login/<Link to="/signup">Create Account</Link></h4>
           <div className='card-body'>
             <form onSubmit={handleFormSubmit}>
+              <div className='email-login'>
               <input
-                className='form-input'
-                placeholder='Your email'
+                className='login-email d-block w-100'
+                placeholder= ' Your email'
                 name='email'
                 type='email'
                 id='email'
                 value={formState.email}
                 onChange={handleChange}
               />
+              </div>
+              <div className='passowrd-login'>
               <input
-                className='form-input'
+                className='login-password d-block w-100'
                 placeholder='******'
                 name='password'
                 type='password'
@@ -68,9 +71,12 @@ const Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
+              </div>
+              
               <button className='button d-block w-100' type='submit'>
                Submit
               </button>
+           
             </form>
             {error && <div>Login failed</div>}
           </div>
