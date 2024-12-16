@@ -1,8 +1,12 @@
-import React, {useState, useMutation} from "react";
+
+import React, { useState } from "react";
 import Auth from './utils/auth';
 import { useLocation } from 'react-router-dom';
-import './index.css'
-import {ADD_PRODUCT_TO_PET} from './utils/mutations'
+import './index.css';
+import { ADD_PRODUCT_TO_PET } from './utils/mutations';
+import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+
 //Might need these import in the future
 // import { useQuery } from '@apollo/client';
 // import {QUERY_PRODUCTS} from "./utils/queries";
@@ -13,13 +17,15 @@ const Product = () => {
 
     try {
       const location = useLocation()
-      petId = location.state.from
+      petId = location.state.from || 0
       console.log('PET ID FROM PREVIOUS SINGLE PET PAGE: ', petId)
     } catch (error){
       console.log(error)
     }
 
     console.log('petID', petId)
+
+    const loggedIn = Auth.loggedIn();
     // query to database for products
     // const {loading, data} = useQuery(QUERY_PRODUCTS)
     // console.log('PRODUCTS DATA:', data && data)
@@ -32,7 +38,22 @@ const Product = () => {
       {id:6, productName: "Cat Toy", description: "Scratching Post",  price: 10, quantity: 20}
     ])
 
-    const loggedIn = Auth.loggedIn();
+     // Apollo Client mutation hook for adding a product to a pet
+     const [addProductToPetDB] = useMutation(ADD_PRODUCT_TO_PET);
+
+    // Function to handle product selection and mutation
+    const addProductToPet = async (productName, description, petId) => {
+      try {
+          // Execute the mutation to add the selected product to the pet's record
+          const { data } = await addProductToPetDB({
+            variables: { petId, productName, description }
+          });
+
+          console.log('Product added to pet:', data);
+        } catch (error) {
+          console.error('Error adding product to pet:', error);
+        }
+      };
 
     // consider this
     // const [addProductToPetDB, { error, data: petData}] = useMutation(ADD_PRODUCT_TO_PET)
@@ -49,27 +70,34 @@ const Product = () => {
   
     
         return (
-           <>
-              <h1>Products/Services</h1>
-              {productData.map((product) => (
-                <div id='myProducts'>
-                  <p id='productName'>{product.productName}</p>
-                  <span>Description:</span><p>{product.description}</p>
-                  <span>Price:</span><p>${product.price}.00</p>
-                  <span>Quantity:</span><p>{product.quantity}</p>
-                  {loggedIn & petId !==0 ? (
-                  <button className='selectProduct-btn' key={product.id} onClick={() => {
-                        // make mutation to add service
-                        // need petId, product.productName, product.description
-                        // addProductToPetDB(petId, product.productName, product.description)
-                  }} >Select {product.productName}</button>
-                  ): <p></p>}
-                </div>
-              ))}
+          <>
+            <h1>Products/Services</h1>
+            {productData.map((product) => (
+              <div key={product.id} id="myProducts">
+                <p id="productName">{product.productName}</p>
+                <span>Description:</span><p>{product.description}</p>
+                <span>Price:</span><p>${product.price}.00</p>
+                <span>Quantity:</span><p>{product.quantity}</p>
+
+                {loggedIn && petId !== 0 ? (
+                  <Link to={`/pet/${petId}`} state={{ from: petId }}>
+                    <button
+                      className="selectProduct-btn"
+                      onClick={() => {
+                        console.log('Adding product to pet...');
+                        addProductToPet(product.productName, product.description, petId);
+                      }}
+                    >
+                      Select {product.productName}
+                    </button>
+                  </Link>
+                ) : (
+                  <p>Please log in to select a product</p>
+                )}
+              </div>
+            ))}
           </>
         );
       }
-
-      // buttonClick.bind( product.productName, product.description)
 
     export default Product;

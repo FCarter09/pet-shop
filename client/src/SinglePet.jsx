@@ -48,7 +48,8 @@ const SinglePet = props => {
             </div>     
             ): <p></p>}
 
-          <Link to={"/product"} state={{from: petId}} ><button className='goToProduct-btn'>Go to Products/Services</button></Link>
+          <Link to={"/product"} state={{from: petId}} ><button className='goToProduct-btn'>Go to Products/Services</button>
+          </Link>
         </div>
       </div>
     </div>
