@@ -7,7 +7,7 @@ This is a minimal viable product(MVP). For the final group project we wanted to 
 
 https://github.com/FCarter09/pet-shop.git
 
-https://pet-shop22.herokuapp.com/
+https://pet-shop2022-2d79e031c89d.herokuapp.com/
 
 
 ## Collaboration Credits
